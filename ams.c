@@ -1,5 +1,5 @@
 /**
- * @authors Nom Prenom Nom Prenom Groupe Ville
+ * @authors Brun Zelman Fontaine Paul CIR3 Caen
  */
 
 #include "define.h"
