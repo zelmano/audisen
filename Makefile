@@ -4,16 +4,22 @@
 #TARGET = audisen_usb.exe # pour la partie USB
 TARGET = audisen_sim.out
 
-
 all: $(TARGET)
 
 run: all
 	@./$(TARGET)
 
 #Etudiants : creez les cibles de votre makefile ICI, et completez
-audisen_sim.out: audisen_sim.c
-	gcc audisen_sim.c -o audisen_sim.out
+audisen_sim.out: audisen_sim.c amp.o ams.o frame.o
+	gcc audisen_sim.c amp.o ams.o frame.o -o audisen_sim.out -lm
+amp.o: amp.c
+	gcc -Wall -c amp.c -o amp.o
+ams.o: ams.c
+	gcc -Wall -c ams.c -o ams.o
+frame.o: frame.c
+	gcc -Wall -c frame.c -o frame.o
 
+# ressources utilisées : anciens TPs sur VI + cours de CIR1 https://web.isen-ouest.fr/moodle4/pluginfile.php/2409/mod_resource/content/0/Cours9_FichiersSepares.pdf
 
 
 #CIBLE a garder pour la partie USB
