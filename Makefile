@@ -1,5 +1,5 @@
 #MakeFile squelette à modifier par les étudiants
-# Nom Prenom Nom Prenom Groupe Ville
+# Brun Zelman Fontaine Paul CIR3 Caen
 
 #TARGET = audisen_usb.exe # pour la partie USB
 TARGET = audisen_sim.out
