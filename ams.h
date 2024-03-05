@@ -7,9 +7,7 @@
 
 #include "define.h"
 
-void split(char* src, char* delim, char** dest);
-
-struct tick tickFromLine(char* line);
+s_tick tickFromLine(char* line);
 
 struct song initSong();
 struct song readAMS(char* fileName);

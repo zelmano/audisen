@@ -6,7 +6,8 @@
 #include "ams.h"
 
 /**
- * ressource utilisée pour séparer une ligne avec '|' : séparation de chaine de caractères : https://www.codingame.com/playgrounds/14213/how-to-play-with-strings-in-c/string-split
+ * tested, it works !
+ * ressource utilisée pour séparer une ligne avec '|' : https://www.codingame.com/playgrounds/14213/how-to-play-with-strings-in-c/string-split
  * @param char* line
  * @return s_tick
  */
@@ -34,14 +35,7 @@ s_tick tickFromLine(char* line){
 }
 
 s_song readAMS(char* fileName){
-
-	// 	int tpm;// tick par minutes
-	// 	int nTicks;// Nombre de ticks dans le morceau
-	// 	char title[MAX_SIZE_TITLE];// Titre du morceau
-	// 	struct tick tickTab[MAX_NUMBER_TICKS];// Tableau de ticks
-	
 	FILE* pf = fopen(fileName, "r");
-
 	s_song mySong;
 
 	if(pf == NULL){
