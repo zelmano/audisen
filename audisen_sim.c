@@ -4,12 +4,8 @@
 
 #include <stdio.h>
 #include "amp.h"
+#include "ams.h"
 
-void test_reformat(){
-    char test[15] = "A_____Bb''cc#d";
-    reformat(test);
-    printf("%s", test);
-}
 
 int main(){
     
