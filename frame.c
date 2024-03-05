@@ -9,12 +9,9 @@
 #include "frame.h"
 #include "define.h"
 
-// exemple de trame : #<content>*<checksum><CR><LF>
-
-
 void createInitFrame(s_song mySong, char* frame){
     //init frame : #Bohemian Rhapsody,144,16*<checksum><CR><LF>
-    char myFrame[MAX_SIZE_LINE];
+    char myFrame[INIT_FRAME_MAX_SIZE];
     myFrame[0] = '#';
     strcat(myFrame, mySong.title);
     strcat(myFrame,",");
@@ -33,10 +30,8 @@ void createInitFrame(s_song mySong, char* frame){
 
     strcat(myFrame,"*");
 
-    //checksum : XOR bit à bit des codes ASCII des caractères compris strictement entre # et *, y compris les virgules.
-    //résultat en hexadécimal sur 2 caractères en minuscules
     int checksum = 0;
-    for(int i = 1; i < strlen(myFrame); i++){
+    for(int i=1; i<strlen(myFrame); i++){
         checksum ^= myFrame[i];
     }
     char checksum_str[3];
