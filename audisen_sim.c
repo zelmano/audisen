@@ -8,6 +8,8 @@
 
 
 int main(){
+    s_song s = readAMS("bohemian_rhapsody.ams");
+    printf("%s", s.title);
     
     return 0;
 }

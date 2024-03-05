@@ -39,6 +39,7 @@ s_song readAMS(char* fileName){
 	s_song mySong;
 
 	if(pf == NULL){
+        printf("file not oppened ! from readAMS()");
 		mySong.title[0] = '\0';
 		mySong.tpm = 0;
 		mySong.nTicks = 0;
@@ -66,6 +67,5 @@ s_song readAMS(char* fileName){
 
 
 void createAMS(char* txtFileName, char* amsFileName){
-
 
 }
