@@ -10,6 +10,9 @@ run: all
 	@./$(TARGET)
 
 #Etudiants : creez les cibles de votre makefile ICI, et completez
+tests.out: autotests.c amp.o ams.o frame.o
+	gcc autotests.c amp.o ams.o frame.o -o autotests.out -lm
+
 audisen_sim.out: audisen_sim.c amp.o ams.o frame.o
 	gcc audisen_sim.c amp.o ams.o frame.o -o audisen_sim.out -lm
 amp.o: amp.c
