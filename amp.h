@@ -7,6 +7,15 @@
 
 #include "define.h"
 
+void lower(char* s);
+
+void replaceWithUnderscores(char* s);
+
+void removeCharAtIndex(char* s, int i);
+
+void removeMultiplesUnderscores(char* s);
+
+void reformat(char* s);
 
 FILE* initAMP(char* filename);
 
