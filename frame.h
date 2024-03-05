@@ -20,6 +20,8 @@
 #define CR 13
 #define LF 10
 
+void checksum_str(char* frame, char* checksumStr);
+
 void createInitFrame(s_song mySong, char* frame);
 void createTickFrame(s_tick myTick, char* frame);
 
