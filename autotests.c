@@ -1,4 +1,3 @@
-
 #include "define.h"
 #include "autotests.h"
 #include "ams.h"
@@ -183,7 +182,6 @@ void testReadAMP(){
 
 }
 
-
 void testFrame() {
     int flag=0;
     int mark[4]={0};
@@ -309,4 +307,17 @@ void testCreateAMS(){
 	}
    printAutoTestsResults("CreateAMS",mark,coeff,2);
 
+}
+
+void runAllAutoTests(){
+    testCreateAMS();
+    testReadAMS();
+    testReadAMP();
+    testFrame();
+}
+
+int main(){
+    runAllAutoTests();
+
+    return 0;
 }

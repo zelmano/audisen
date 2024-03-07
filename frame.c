@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "frame.h"
 #include "define.h"
+#include "amp.h"
 
 // tested with https://www.scadacore.com/tools/programming-calculators/online-checksum-calculator/
 // it works !
@@ -22,8 +24,12 @@ void checksum_str(char* frame, char* checksumStr){
 // tested, it works
 void createInitFrame(s_song mySong, char* frame){
     //init frame : #Bohemian Rhapsody,144,16*<checksum><CR><LF>
-    char myFrame[INIT_FRAME_MAX_SIZE];
+    char myFrame[INIT_FRAME_MAX_SIZE] = "";
     myFrame[0] = '#';
+    char lastCharTitle = mySong.title[strlen(mySong.title)-1];
+    if (!isalnum(lastCharTitle)){
+        removeCharAtIndex(mySong.title, strlen(mySong.title)-1);
+    }
     strcat(myFrame, mySong.title);
     strcat(myFrame,",");
 
@@ -56,7 +62,7 @@ void createTickFrame(s_tick myTick, char* frame){
     myFrame[0] = '#';
 
     // mode
-    strcat(myFrame, "1,");
+    strcat(myFrame, "0,");
 
     // accent
     if (myTick.accent){
