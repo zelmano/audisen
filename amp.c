@@ -58,7 +58,7 @@ void reformat(char* s){
 }
 
 /**
- * tente d'ouvrir le fichier ams
+ * tente d'ouvrir le fichier amp
  * ressource utilisée pour le rappel sur fopen() : https://koor.fr/C/cstdio/fopen.wp
  * * @param filename
  * @return a file pointer
@@ -81,7 +81,7 @@ FILE* initAMP(char* filename){
  */
 void readAMP(FILE* pf, char * AMSfilename){
     if (!feof(pf)) {
-        fgets(AMSfilename, MAX_SONGNAME_SIZE, pf); // lit une ligne pour récupérer le nom de la musique
+        fgets(AMSfilename, MAX_SONGNAME_SIZE, pf); // lit une ligne pour récupérer le nom de la musique non formaté
         reformat(AMSfilename);
         return;
     }

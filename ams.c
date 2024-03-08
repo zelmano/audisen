@@ -15,7 +15,7 @@
 s_tick tickFromLine(char* line){
     s_tick tick_;
     for (int i = 0; i < 4; ++i) {
-        tick_.note[i] = 0;
+        tick_.note[i] = 0; // on initialise le tick avec des notes 0
     }
     int j = 0;
 
@@ -78,7 +78,7 @@ s_song readAMS(char* fileName){
 
 	if(pf == NULL){
         printf("file not opened ! A song filled with 0 is returned. from readAMS()\n");
-		mySong.title[0] = '\0';
+        mySong.title[0] = '\0';
 		mySong.tpm = 0;
 		mySong.nTicks = 0;
         for (int i = 0; i < MAX_NUMBER_TICKS; ++i) {
@@ -87,7 +87,6 @@ s_song readAMS(char* fileName){
                 mySong.tickTab[i].note[j] = 0;
             }
         }
-
 	}else{
 		fgets(mySong.title, MAX_SIZE_TITLE, pf); // 1ere ligne : titre
         removeCharAtIndex(mySong.title, strlen(mySong.title)-1); // but : enlever le \n à la fin pour passer l'autotest
@@ -106,8 +105,10 @@ s_song readAMS(char* fileName){
 			nb_ticks++;
 		}
 		mySong.nTicks = nb_ticks;
+
+        fclose(pf);
 	}
-    fclose(pf);
+
 	return mySong;
 }
 
@@ -133,7 +134,7 @@ void createAMS(char* txtFileName, char* amsFileName){
     char buffer[10] = "";
     fgets(buffer, 10, rpf); // 3ème ligne vide
 
-    char temp_tab[MAX_NUMBER_TICKS][60];
+    char temp_tab[MAX_NUMBER_TICKS][60]; // tableau en mémoire qui représente le tableau du fichier ams, il est initialisé avec des espaces
     for (int i = 0; i < MAX_NUMBER_TICKS; ++i) {
         for (int j = 0; j < 60; ++j) {
             temp_tab[i][j] = ' ';
@@ -148,10 +149,9 @@ void createAMS(char* txtFileName, char* amsFileName){
             // séparation de la note et du nombre de ticks
             int duration = durationFromLetter(token[strlen(token)-1]);
             char note_str[4] = "";
-            if (token[0] == ' '){ removeCharAtIndex(token, 0);}
-            strncpy(note_str, token, strlen(token)-2);
+            if (token[0] == ' '){ removeCharAtIndex(token, 0);} // enlève l'espace associé à la virgule pour les token 2,3,4
+            strncpy(note_str, token, strlen(token)-2); // enlève l'espace et la dernière lettre de token
             int note_int = noteNumberFromString(note_str);
-
 
             // remplissage du tableau
             temp_tab[i][note_int-1] = '^';

@@ -26,10 +26,13 @@ void createInitFrame(s_song mySong, char* frame){
     //init frame : #Bohemian Rhapsody,144,16*<checksum><CR><LF>
     char myFrame[INIT_FRAME_MAX_SIZE] = "";
     myFrame[0] = '#';
+
+    // remove the '\r', the '\r' was needed to pass the tests
     char lastCharTitle = mySong.title[strlen(mySong.title)-1];
     if (!isalnum(lastCharTitle)){
         removeCharAtIndex(mySong.title, strlen(mySong.title)-1);
     }
+
     strcat(myFrame, mySong.title);
     strcat(myFrame,",");
 
@@ -45,7 +48,7 @@ void createInitFrame(s_song mySong, char* frame){
     sprintf(nTicks_str, "%d", mySong.nTicks);
     strcat(myFrame,nTicks_str);
 
-    // checksum
+    // checksum calculée avant l'ajout de '*'
     char checksumStr[3] = "";
     checksum_str(myFrame, checksumStr);
     strcat(myFrame,"*");

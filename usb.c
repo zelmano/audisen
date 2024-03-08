@@ -7,8 +7,6 @@
 #include "ftd2xx.h"
 #include "usb.h"
 
-//DWORD BytesWritten;
-
 FT_HANDLE initUSB(){
     FT_HANDLE ftHandle;
     FT_STATUS ftStatus;
@@ -22,12 +20,12 @@ FT_HANDLE initUSB(){
     ftStatus |= FT_SetFlowControl(ftHandle, FT_FLOW_NONE, 0, 0); // pas de contrôle de flux
 
     ftStatus |= FT_SetTimeouts(ftHandle, 5000, 1000); // pas recevoir trop de données
-
+    /*
     if(ftStatus == FT_OK){
         printf("it works");
     }else{
         printf("it works pas");
-    }
+    }*/
 
     return ftHandle;
 }
@@ -40,10 +38,10 @@ void writeUSB(char* frame, FT_HANDLE ftHandle){
     FT_STATUS ftStatus;
     DWORD BytesWritten;
     ftStatus = FT_Write(ftHandle, frame, strlen(frame), &BytesWritten);
-
+    /*
     if(ftStatus == FT_OK){
         printf("it works");
     }else{
         printf("it works pas");
-    }
+    }*/
 }
